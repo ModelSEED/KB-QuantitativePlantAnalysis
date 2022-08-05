@@ -1,0 +1,183 @@
+#
+# Define basic display information
+#
+name     : Predict Plant Biomass Yield from Glucose 
+
+tooltip  : |
+    Predict plant biomass yeild from glucose
+
+screenshots : []
+
+
+#
+# Define the set of other narrative methods that should be suggested to the user.
+#
+suggestions :
+    apps:
+        related :
+            []
+        next :
+            []
+    methods:
+        related :
+            []
+        next :
+            []
+
+
+#
+# Configure the display and description of the parameters
+#
+parameters :
+    cellulose :
+        ui-name : |
+            Cellulose
+        short-hint : |
+            Relative abundance of cellulose in biomass
+
+    hemicellulose :
+        ui-name : |
+            Hemicellulose
+        short-hint : |
+            Relative abundance of hemicellulose in biomass
+
+    starch :
+        ui-name : |
+            Starch
+        short-hint : |
+            Relative abundance of starch in biomass
+
+    sugars :
+        ui-name : |
+            Sugars
+        short-hint : |
+            Relative abundance of sugars in biomass
+
+    lignin :
+        ui-name : |
+            Lignin
+        short-hint : |
+            Relative abundance of lignin in biomass
+
+    lipid :
+        ui-name : |
+            Lipid
+        short-hint : |
+            Relative abundance of lipid in biomass
+
+    protein :
+        ui-name : |
+            Protein
+        short-hint : |
+            Relative abundance of protein in biomass
+
+    organic_acid :
+        ui-name : |
+            Organic acid
+        short-hint : |
+            Relative abundance of organic acid in biomass
+
+    minerals :
+        ui-name : |
+            Minerals
+        short-hint : |
+            Relative abundance of minerals in biomass
+
+    nh4 :
+        ui-name : |
+            NH4
+        short-hint : |
+            Relative abundance of NH4 as nitrogen source
+
+    no3 :
+        ui-name : |
+            NO3
+        short-hint : |
+            Relative abundance of NO3 as nitrogen source
+
+    n2 :
+        ui-name : |
+            N2
+        short-hint : |
+            Relative abundance of N2 as nitrogen source
+
+    plant_type :
+        ui-name : |
+            plant_type
+        short-hint : |
+            Plant type
+
+    coumaryl :
+        ui-name : |
+            Coumaryl
+        short-hint : |
+            Relative abundance of coumaryl in lignin
+
+    coniferyl :
+        ui-name : |
+            Coniferyl
+        short-hint : |
+            Relative abundance of coniferyl in lignin
+
+    sinapyl :
+        ui-name : |
+            Sinapyl
+        short-hint : |
+            Relative abundance of sinapyl in lignin
+
+    aconitic_citric :
+        ui-name : |
+            Aconitic or citric
+        short-hint : |
+            Relative abundance of aconitic or citric in organic acids
+
+    malic_oxaloacetic :
+        ui-name : |
+            Malic or oxaloacetic
+        short-hint : |
+            Relative abundance of malic or oxaloacetic in organic acids
+
+    oxalic :
+        ui-name : |
+            Oxalic
+        short-hint : |
+            Relative abundance of oxalic in organic acids
+parameter-groups:
+  biomass_composition:
+    ui-name: |
+      Biomass composition
+    short-hint: |
+      Input biomass composition as fractions - should add to one.
+  nitrogen_source:
+    ui-name: |
+      Nitrogen source
+    short-hint: |
+      Relative abundance of nitrogen sources for growth.
+  hemicellulose_fraction:
+    ui-name: |
+      Hemicellulose fraction
+    short-hint: |
+      Select plant type from which hemicellulose fraction will be computed.
+  monomer_lignin_fraction:
+    ui-name: |
+      Monomer lignin fraction
+    short-hint: |
+      Relative fraction of monomers comprising lignin.
+  organic_acid_fraction:
+    ui-name: |
+      Organic acid fraction
+    short-hint: |
+      Relative abundance of organic acids in plant.
+
+icon: modelseed-teal.png
+
+description : |
+
+    <p>TODO</p>
+
+
+publications :
+    -
+        display-text: |
+            [1] TODO
+        link: https://www.ncbi.nlm.nih.gov/pubmed/20802497

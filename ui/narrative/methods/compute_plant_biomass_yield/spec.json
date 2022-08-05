@@ -1,0 +1,460 @@
+{
+    "name": "compute_plant_biomass_yield",
+    "ver": "0.0.1",
+    "authors": [
+        "chenry"
+    ],
+    "contact": "http://kbase.us/contact-us/",
+    "visible": true,
+    "categories": [
+        "active"
+    ],
+    "widgets": {
+        "output": null,
+        "input": null
+    },
+    "parameter-groups": [
+        {
+            "id": "biomass_composition",
+            "parameters": [
+                "cellulose",
+                "hemicellulose",
+                "starch",
+                "sugars",
+                "lignin",
+                "lipid",
+                "protein",
+                "organic_acid",
+                "minerals"
+            ],
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": true,
+            "with_border": true
+        },
+        {
+            "id": "nitrogen_source",
+            "parameters": [
+                "nh4",
+                "no3",
+                "n2"
+            ],
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": true,
+            "with_border": true
+        },
+        {
+            "id": "hemicellulose_fraction",
+            "parameters": [
+                "plant_type"
+            ],
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": true,
+            "with_border": true
+        },
+        {
+            "id": "monomer_lignin_fraction",
+            "parameters": [
+                "coumaryl",
+                "coniferyl",
+                "sinapyl"
+            ],
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": true,
+            "with_border": true
+        },
+        {
+            "id": "organic_acid_fraction",
+            "parameters": [
+                "aconitic_citric",
+                "malic_oxaloacetic",
+                "oxalic"
+            ],
+            "optional": false,
+            "advanced": false,
+            "allow_multiple": true,
+            "with_border": true
+        }
+    ],
+    "parameters": [
+        {
+        	"id" : "cellulose",
+			"field_type" : "text",
+         	"default_values" : [
+            	"0.1"
+         	],
+         	"text_options" : {
+				"validate_as" : "float"
+			},
+			"allow_multiple" : false,
+			"optional" : false,
+			"advanced" : false
+      	},
+        {
+        	"id" : "hemicellulose",
+			"field_type" : "text",
+         	"default_values" : [
+            	"0.1"
+         	],
+         	"text_options" : {
+				"validate_as" : "float"
+			},
+			"allow_multiple" : false,
+			"optional" : false,
+			"advanced" : false
+      	},
+      	{
+        	"id" : "starch",
+			"field_type" : "text",
+         	"default_values" : [
+            	"0.1"
+         	],
+         	"text_options" : {
+				"validate_as" : "float"
+			},
+			"allow_multiple" : false,
+			"optional" : false,
+			"advanced" : false
+      	},
+      	{
+        	"id" : "sugars",
+			"field_type" : "text",
+         	"default_values" : [
+            	"0.1"
+         	],
+         	"text_options" : {
+				"validate_as" : "float"
+			},
+			"allow_multiple" : false,
+			"optional" : false,
+			"advanced" : false
+      	},
+      	{
+        	"id" : "lignin",
+			"field_type" : "text",
+         	"default_values" : [
+            	"0.1"
+         	],
+         	"text_options" : {
+				"validate_as" : "float"
+			},
+			"allow_multiple" : false,
+			"optional" : false,
+			"advanced" : false
+      	},
+      	{
+        	"id" : "lipid",
+			"field_type" : "text",
+         	"default_values" : [
+            	"0.1"
+         	],
+         	"text_options" : {
+				"validate_as" : "float"
+			},
+			"allow_multiple" : false,
+			"optional" : false,
+			"advanced" : false
+      	},
+      	{
+        	"id" : "protein",
+			"field_type" : "text",
+         	"default_values" : [
+            	"0.1"
+         	],
+         	"text_options" : {
+				"validate_as" : "float"
+			},
+			"allow_multiple" : false,
+			"optional" : false,
+			"advanced" : false
+      	},
+      	{
+        	"id" : "organic_acid",
+			"field_type" : "text",
+         	"default_values" : [
+            	"0.1"
+         	],
+         	"text_options" : {
+				"validate_as" : "float"
+			},
+			"allow_multiple" : false,
+			"optional" : false,
+			"advanced" : false
+      	},
+      	{
+        	"id" : "minerals",
+			"field_type" : "text",
+         	"default_values" : [
+            	"0.1"
+         	],
+         	"text_options" : {
+				"validate_as" : "float"
+			},
+			"allow_multiple" : false,
+			"optional" : false,
+			"advanced" : false
+      	},
+      	{
+        	"id" : "nh4",
+			"field_type" : "text",
+         	"default_values" : [
+            	"0.33"
+         	],
+         	"text_options" : {
+				"validate_as" : "float"
+			},
+			"allow_multiple" : false,
+			"optional" : false,
+			"advanced" : false
+      	},
+      	{
+        	"id" : "no3",
+			"field_type" : "text",
+         	"default_values" : [
+            	"0.33"
+         	],
+         	"text_options" : {
+				"validate_as" : "float"
+			},
+			"allow_multiple" : false,
+			"optional" : false,
+			"advanced" : false
+      	},
+      	{
+        	"id" : "n2",
+			"field_type" : "text",
+         	"default_values" : [
+            	"0.34"
+         	],
+         	"text_options" : {
+				"validate_as" : "float"
+			},
+			"allow_multiple" : false,
+			"optional" : false,
+			"advanced" : false
+      	},
+      	{
+        	"id" : "coumaryl",
+			"field_type" : "text",
+         	"default_values" : [
+            	"0.33"
+         	],
+         	"text_options" : {
+				"validate_as" : "float"
+			},
+			"allow_multiple" : false,
+			"optional" : false,
+			"advanced" : false
+      	},
+      	{
+        	"id" : "coniferyl",
+			"field_type" : "text",
+         	"default_values" : [
+            	"0.33"
+         	],
+         	"text_options" : {
+				"validate_as" : "float"
+			},
+			"allow_multiple" : false,
+			"optional" : false,
+			"advanced" : false
+      	},
+      	{
+        	"id" : "sinapyl",
+			"field_type" : "text",
+         	"default_values" : [
+            	"0.34"
+         	],
+         	"text_options" : {
+				"validate_as" : "float"
+			},
+			"allow_multiple" : false,
+			"optional" : false,
+			"advanced" : false
+      	},
+      	{
+        	"id" : "aconitic_citric",
+			"field_type" : "text",
+         	"default_values" : [
+            	"0.33"
+         	],
+         	"text_options" : {
+				"validate_as" : "float"
+			},
+			"allow_multiple" : false,
+			"optional" : false,
+			"advanced" : false
+      	},
+      	{
+        	"id" : "malic_oxaloacetic",
+			"field_type" : "text",
+         	"default_values" : [
+            	"0.33"
+         	],
+         	"text_options" : {
+				"validate_as" : "float"
+			},
+			"allow_multiple" : false,
+			"optional" : false,
+			"advanced" : false
+      	},
+      	{
+        	"id" : "oxalic",
+			"field_type" : "text",
+         	"default_values" : [
+            	"0.34"
+         	],
+         	"text_options" : {
+				"validate_as" : "float"
+			},
+			"allow_multiple" : false,
+			"optional" : false,
+			"advanced" : false
+      	},
+        {
+            "id": "plant_type",
+            "field_type": "dropdown",
+            "default_values": [
+                ""
+            ],
+            "dropdown_options": {
+                "options": [
+                    {
+                        "id": "Conifer",
+                        "display": "Conifer",
+                        "ui_name": "Conifer",
+                        "value": "Conifer"
+                    },
+                    {
+                        "value": "Dicot",
+                        "ui_name": "Dicot",
+                        "display": "Dicot",
+                        "id": "Dicot"
+                    },
+                    {
+                        "id": "Grass",
+                        "value": "Grass",
+                        "ui_name": "Grass",
+                        "display": "Grass"
+                    }
+                ]
+            },
+            "allow_multiple": true,
+            "optional": true,
+            "advanced": true
+        }
+    ],
+    "behavior": {
+        "service-mapping": {
+            "url": "",
+            "name": "QuantitativePlantAnalysis",
+            "method": "compute_plant_biomass_yield",
+            "input_mapping": [
+                {
+                    "target_property": "workspace",
+                    "narrative_system_variable": "workspace"
+                },
+                {
+                    "input_parameter": "cellulose",
+                    "target_property": "cellulose"
+                },
+                {
+                    "input_parameter": "hemicellulose",
+                    "target_property": "hemicellulose"
+                },
+                {
+                    "target_property": "starch",
+                    "input_parameter": "starch"
+                },
+                {
+                    "target_property": "sugars",
+                    "input_parameter": "sugars"
+                },
+                {
+                    "target_property": "lignin",
+                    "input_parameter": "lignin"
+                },
+                {
+                    "target_property": "lipid",
+                    "input_parameter": "lipid"
+                },
+                {
+                    "target_property": "protein",
+                    "input_parameter": "protein"
+                },
+                {
+                    "target_property": "organic_acid",
+                    "input_parameter": "organic_acid"
+                },
+                {
+                    "target_property": "minerals",
+                    "input_parameter": "minerals"
+                },
+                {
+                    "target_property": "plant_type",
+                    "input_parameter": "plant_type"
+                },
+                {
+                    "target_property": "nh4",
+                    "input_parameter": "nh4"
+                },
+                {
+                    "target_property": "no3",
+                    "input_parameter": "no3"
+                },
+                {
+                    "target_property": "n2",
+                    "input_parameter": "n2"
+                },
+                {
+                    "target_property": "coumaryl",
+                    "input_parameter": "coumaryl"
+                },
+                {
+                    "target_property": "coniferyl",
+                    "input_parameter": "coniferyl"
+                },
+                {
+                    "target_property": "sinapyl",
+                    "input_parameter": "sinapyl"
+                },
+                {
+                    "target_property": "aconitic_citric",
+                    "input_parameter": "aconitic_citric"
+                },
+                {
+                    "target_property": "malic_oxaloacetic",
+                    "input_parameter": "malic_oxaloacetic"
+                },
+                {
+                    "target_property": "oxalic",
+                    "input_parameter": "oxalic"
+                }
+            ],
+            "output_mapping": [
+                {
+                    "service_method_output_path": [
+                        0,
+                        "report_name"
+                    ],
+                    "target_property": "report_name"
+                },
+                {
+                    "service_method_output_path": [
+                        0,
+                        "report_ref"
+                    ],
+                    "target_property": "report_ref"
+                },
+                {
+                    "narrative_system_variable": "workspace",
+                    "target_property": "workspace"
+                }
+            ]
+        }
+    },
+    "job_id_output_field": "docker"
+}
