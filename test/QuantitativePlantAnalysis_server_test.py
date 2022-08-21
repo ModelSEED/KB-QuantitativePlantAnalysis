@@ -63,5 +63,4 @@ class QuantitativePlantAnalysisTest(unittest.TestCase):
         #
         # Check returned data with
         # self.assertEqual(ret[...], ...) or other unittest methods
-        ret = self.serviceImpl.run_QuantitativePlantAnalysis(self.ctx, {'workspace_name': self.wsName,
-                                                             'parameter_1': 'Hello World!'})
+        ret = self.serviceImpl.compute_plant_biomass_yield(self.ctx,{"workspace":self.wsName})

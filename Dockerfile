@@ -8,6 +8,9 @@ MAINTAINER KBase Developer
 
 # RUN apt-get update
 
+RUN pip install --upgrade pip && \
+	pip install Jinja2 && \
+	pip install pandas
 
 # -----------------------------------------
 
