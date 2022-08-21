@@ -179,5 +179,45 @@ description : |
 publications :
     -
         display-text: |
-            [1] TODO
-        link: https://www.ncbi.nlm.nih.gov/pubmed/20802497
+            [1] Amthor JS. 2000. The McCree–de Wit–Penning de Vries–Thornley respiration paradigms: 30 years later. Annals of Botany 86: 1-20.
+        link: https://www.ncbi.nlm.nih.gov/
+
+    -
+        display-text: |
+            [2] Amthor JS. 2003. Efficiency of lignin biosynthesis: a quantitative analysis. Annals of Botany 91: 673-695.
+        link: https://www.ncbi.nlm.nih.gov/
+
+    -
+        display-text: |
+            [3] Amthor JS. 2010. From sunlight to phytomass: on the potential efficiency of converting solar radiation to phyto-energy. New Phytologist 188: 939-959.
+        link: https://www.ncbi.nlm.nih.gov/
+
+    -
+        display-text: |
+            [4] Penning de Vries FWT. 1992. Respiration and growth. In: Rees AR, Cockshull KE, Hand DW, Hurd RG (eds) Crop Processes in Controlled Environments. London and New York: Academic Press.
+        link: https://www.ncbi.nlm.nih.gov/
+
+    -
+        display-text: |
+            [5] Penning de Vries FWT, Brunsting AHM, van Laar HH. 1974. Products, requirements and efficiency of biosynthesis a quantitative approach. Journal of Theoretical Biology 45: 339-377.
+        link: https://www.ncbi.nlm.nih.gov/
+    
+    -
+        display-text: |
+            [6] Thornley JHM, France J. 2007. Mathematical Models in Agriculture, 2nd ed. Wallingford, UK: CABI.
+        link: https://www.ncbi.nlm.nih.gov/
+    
+    -
+        display-text: |
+            [7] Thornley JHM, Johnson IR. 1990. Plant and Crop Modeling. Oxford, UK: Oxford University Press.
+        link: https://www.ncbi.nlm.nih.gov/
+    
+    -
+        display-text: |
+            [8] Williams K, Percival F, Merino J, Mooney HA. 1987. Estimation of tissue construction cost from heat of combustion and organic nitrogen content. Plant, Cell and Environment 10: 725-734.
+        link: https://www.ncbi.nlm.nih.gov/
+    
+    -
+        display-text: |
+            [9] Zerihun A, McKenzie BA, Morton JD. 1998. Photosynthate costs associated with the utilization of different nitrogen forms: influence on the carbon balance of plants and shoot–root biomass partitioning. New Phytologist 138: 1-11.
+        link: https://www.ncbi.nlm.nih.gov/

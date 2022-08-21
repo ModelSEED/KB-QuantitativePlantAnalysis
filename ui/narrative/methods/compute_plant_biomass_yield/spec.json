@@ -2,7 +2,7 @@
     "name": "compute_plant_biomass_yield",
     "ver": "0.0.1",
     "authors": [
-        "chenry"
+        "chenry","jeff_amthor"
     ],
     "contact": "http://kbase.us/contact-us/",
     "visible": true,
