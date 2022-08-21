@@ -210,7 +210,6 @@ class QuantitativePlantAnalysis:
             workspace = params["workspace"]
         else:
             workspace = str(params["workspace"])
-        output = {"report_name":report_name,"report_ref":workspace+"/"+report_name,'workspace_name':workspace,'ws':workspace}
         html_report_folder = os.path.join(self.shared_folder, 'htmlreport')
         os.makedirs(html_report_folder, exist_ok=True)
         with open(os.path.join(html_report_folder, 'index.html'), 'w') as f:
@@ -232,7 +231,8 @@ class QuantitativePlantAnalysis:
             'report_object_name': report_name
         }
         report = KBaseReport(self.callback_url, token=ctx['token'])
-        report.create_extended_report(report_params)
+        repout = report.create_extended_report(report_params)
+        output = {"report_name":report_name,"report_ref":repout["ref"],'workspace_name':workspace}
         #END compute_plant_biomass_yield
 
         # At some point might do deeper type checking...
