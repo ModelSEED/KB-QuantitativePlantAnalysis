@@ -27,7 +27,7 @@
                 "organic_acid",
                 "minerals"
             ],
-            "optional": false,
+            "optional": true,
             "advanced": false,
             "allow_multiple": true,
             "with_border": true
@@ -39,7 +39,7 @@
                 "no3",
                 "n2"
             ],
-            "optional": false,
+            "optional": true,
             "advanced": false,
             "allow_multiple": true,
             "with_border": true
@@ -49,7 +49,7 @@
             "parameters": [
                 "plant_type"
             ],
-            "optional": false,
+            "optional": true,
             "advanced": false,
             "allow_multiple": true,
             "with_border": true
@@ -61,7 +61,7 @@
                 "coniferyl",
                 "sinapyl"
             ],
-            "optional": false,
+            "optional": true,
             "advanced": false,
             "allow_multiple": true,
             "with_border": true
@@ -73,7 +73,7 @@
                 "malic_oxaloacetic",
                 "oxalic"
             ],
-            "optional": false,
+            "optional": true,
             "advanced": false,
             "allow_multiple": true,
             "with_border": true
@@ -84,7 +84,7 @@
         	"id" : "cellulose",
 			"field_type" : "text",
          	"default_values" : [
-            	"0.1"
+            	"0.33"
          	],
          	"text_options" : {
 				"validate_as" : "float"
@@ -97,7 +97,7 @@
         	"id" : "hemicellulose",
 			"field_type" : "text",
          	"default_values" : [
-            	"0.1"
+            	"0.3"
          	],
          	"text_options" : {
 				"validate_as" : "float"
@@ -110,7 +110,7 @@
         	"id" : "starch",
 			"field_type" : "text",
          	"default_values" : [
-            	"0.1"
+            	"0.3"
          	],
          	"text_options" : {
 				"validate_as" : "float"
@@ -123,7 +123,7 @@
         	"id" : "sugars",
 			"field_type" : "text",
          	"default_values" : [
-            	"0.1"
+            	"0.04"
          	],
          	"text_options" : {
 				"validate_as" : "float"
@@ -136,7 +136,7 @@
         	"id" : "lignin",
 			"field_type" : "text",
          	"default_values" : [
-            	"0.1"
+            	"0.05"
          	],
          	"text_options" : {
 				"validate_as" : "float"
@@ -149,7 +149,7 @@
         	"id" : "lipid",
 			"field_type" : "text",
          	"default_values" : [
-            	"0.1"
+            	"0.03"
          	],
          	"text_options" : {
 				"validate_as" : "float"
@@ -162,7 +162,7 @@
         	"id" : "protein",
 			"field_type" : "text",
          	"default_values" : [
-            	"0.1"
+            	"0.13"
          	],
          	"text_options" : {
 				"validate_as" : "float"
@@ -175,7 +175,7 @@
         	"id" : "organic_acid",
 			"field_type" : "text",
          	"default_values" : [
-            	"0.1"
+            	"0.03"
          	],
          	"text_options" : {
 				"validate_as" : "float"
@@ -188,7 +188,7 @@
         	"id" : "minerals",
 			"field_type" : "text",
          	"default_values" : [
-            	"0.1"
+            	"0.05"
          	],
          	"text_options" : {
 				"validate_as" : "float"
@@ -201,7 +201,7 @@
         	"id" : "nh4",
 			"field_type" : "text",
          	"default_values" : [
-            	"0.33"
+            	"0.3"
          	],
          	"text_options" : {
 				"validate_as" : "float"
@@ -214,7 +214,7 @@
         	"id" : "no3",
 			"field_type" : "text",
          	"default_values" : [
-            	"0.33"
+            	"0.69"
          	],
          	"text_options" : {
 				"validate_as" : "float"
@@ -227,7 +227,7 @@
         	"id" : "n2",
 			"field_type" : "text",
          	"default_values" : [
-            	"0.34"
+            	"0.01"
          	],
          	"text_options" : {
 				"validate_as" : "float"
@@ -240,7 +240,7 @@
         	"id" : "coumaryl",
 			"field_type" : "text",
          	"default_values" : [
-            	"0.33"
+            	"0.4"
          	],
          	"text_options" : {
 				"validate_as" : "float"
@@ -253,7 +253,7 @@
         	"id" : "coniferyl",
 			"field_type" : "text",
          	"default_values" : [
-            	"0.33"
+            	"0.4"
          	],
          	"text_options" : {
 				"validate_as" : "float"
@@ -266,7 +266,7 @@
         	"id" : "sinapyl",
 			"field_type" : "text",
          	"default_values" : [
-            	"0.34"
+            	"0.2"
          	],
          	"text_options" : {
 				"validate_as" : "float"
@@ -279,7 +279,7 @@
         	"id" : "aconitic_citric",
 			"field_type" : "text",
          	"default_values" : [
-            	"0.33"
+            	"0.475"
          	],
          	"text_options" : {
 				"validate_as" : "float"
@@ -292,7 +292,7 @@
         	"id" : "malic_oxaloacetic",
 			"field_type" : "text",
          	"default_values" : [
-            	"0.33"
+            	"0.475"
          	],
          	"text_options" : {
 				"validate_as" : "float"
@@ -305,7 +305,7 @@
         	"id" : "oxalic",
 			"field_type" : "text",
          	"default_values" : [
-            	"0.34"
+            	"0.05"
          	],
          	"text_options" : {
 				"validate_as" : "float"
@@ -318,7 +318,7 @@
             "id": "plant_type",
             "field_type": "dropdown",
             "default_values": [
-                ""
+                "Conifer"
             ],
             "dropdown_options": {
                 "options": [
