@@ -9,10 +9,10 @@
     "categories": [
         "active"
     ],
-    "widgets": {
-        "output": "no-display",
-        "input": null
-    },
+    "widgets" : {
+      "input" : null,
+      "output" : "no-display"
+   },
     "parameter-groups": [
         {
             "id": "biomass_composition",
