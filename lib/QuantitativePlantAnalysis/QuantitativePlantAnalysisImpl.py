@@ -74,9 +74,6 @@ class QuantitativePlantAnalysis:
         XhemiC,XhemiD,XhemiG,XlignH = 1.228,1.230,1.265,2.558
         XlignG,XlignS,Xlipid,Xprotn = 2.605,2.638,2.866,1.832
         XoaAC,XoaMO,XoaOA,Xminrl = 0.794,0.642,4.002,0.15
-        #"Monomer lignin fraction":None,"Organic acid fraction":None,"Hemicellulose fraction":None
-        default_output = {"Biomass composition":None,"Nitrogen source":None,
-                          "Growth yield results":None}
         result_table = pd.DataFrame({})
         
         if len(params["biomass_composition"]) == 0:
@@ -179,31 +176,64 @@ class QuantitativePlantAnalysis:
                             GRoa   = GRoa * OrAcid
                             GluReq = GRNacq + GRcell + GRstar + GRsugr + GRlipd + GRprot + GRminl + GRhemi + GRlign + GRoa
                             
-                            current_output = default_output.copy()
-                            
+                            current_output = {}
                             current_output["Biomass composition"] = "<table>"\
                                 '<tr><th>Biomass constituent</th><th>Fraction</th><th>GluReq</th></tr>'+ \
-                                '<tr><td>Cellulose</td><td>'+str(Cellul)+"</td><td>"+str(GRcell)+"</td></tr>"+ \
-                                '<tr><td>Hemicelluloses</td><td>'+str(Hemice)+"</td><td>"+str(GRhemi)+"</td></tr>"+ \
-                                '<tr><td>Starch</td><td>'+str(Starch)+"</td><td>"+str(GRstar)+"</td></tr>"+ \
-                                '<tr><td>Sugars</td><td>'+str(Sugars)+"</td><td>"+str(GRsugr)+"</td></tr>"+ \
-                                '<tr><td>Lignins</td><td>'+str(Lignin)+"</td><td>"+str(GRlign)+"</td></tr>"+ \
-                                '<tr><td>Lipids</td><td>'+str(Lipids)+"</td><td>"+str(GRlipd)+"</td></tr>"+ \
-                                '<tr><td>Protein</td><td>'+str(Proten)+"</td><td>"+str(GRprot)+"</td></tr>"+ \
-                                '<tr><td>Organic Acids</td><td>'+str(OrAcid)+"</td><td>"+str(GRoa)+"</td></tr>"+ \
-                                '<tr><td>Minerals</td><td>'+str(Minerl)+"</td><td>"+str(GRminl)+"</td></tr>"+ \
-                                '<tr><td>N uptake/assimilation</td><td>'+str(0.0)+"</td><td>"+str(GRNacq)+"</td></tr>"+ \
-                                '<tr><td>TOTAL</td><td>'+str(NewTot)+"</td><td>"+str(GluReq)+"</td></tr></table>"
-                            current_output["Nitrogen source"] = "<table>"\
-                                '<tr><td>Plant N [estimated]</td><td>'+str(PlantN)+" (g/g plant)</td></tr>"+ \
-                                '<tr><td>N from NH4-N</td><td>'+str(N_NH4)+" (g/g plant)</td></tr>"+ \
-                                '<tr><td>N from NO3-N</td><td>'+str(N_NO3)+" (g/g plant)</td></tr>"+ \
-                                '<tr><td>N from  N2-N</td><td>'+str(N_N2)+" (g/g plant)</td></tr>"+ \
-                                '<tr><td>N assimilation cost</td><td>'+str(GRNacq)+" (g glu/g plant)</td></tr></table>"
+                                '<tr><td>Cellulose</td><td>'+"{:.2f}".format(Cellul)+"</td><td>"+"{:.2f}".format(GRcell)+"</td></tr>"+ \
+                                '<tr><td>Hemicelluloses</td><td>'+"{:.2f}".format(Hemice)+"</td><td>"+"{:.2f}".format(GRhemi)+"</td></tr>"+ \
+                                '<tr><td>Starch</td><td>'+"{:.2f}".format(Starch)+"</td><td>"+"{:.2f}".format(GRstar)+"</td></tr>"+ \
+                                '<tr><td>Sugars</td><td>'+"{:.2f}".format(Sugars)+"</td><td>"+"{:.2f}".format(GRsugr)+"</td></tr>"+ \
+                                '<tr><td>Lignins</td><td>'+"{:.2f}".format(Lignin)+"</td><td>"+"{:.2f}".format(GRlign)+"</td></tr>"+ \
+                                '<tr><td>Lipids</td><td>'+"{:.2f}".format(Lipids)+"</td><td>"+"{:.2f}".format(GRlipd)+"</td></tr>"+ \
+                                '<tr><td>Protein</td><td>'+"{:.2f}".format(Proten)+"</td><td>"+"{:.2f}".format(GRprot)+"</td></tr>"+ \
+                                '<tr><td>Organic Acids</td><td>'+"{:.2f}".format(OrAcid)+"</td><td>"+"{:.2f}".format(GRoa)+"</td></tr>"+ \
+                                '<tr><td>Minerals</td><td>'+"{:.2f}".format(Minerl)+"</td><td>"+"{:.2f}".format(GRminl)+"</td></tr>"+ \
+                                '<tr><td>N uptake/assimilation</td><td>'+str(0.0)+"</td><td>"+"{:.2f}".format(GRNacq)+"</td></tr>"+ \
+                                '<tr><td>TOTAL</td><td>'+"{:.2f}".format(NewTot)+"</td><td>"+"{:.2f}".format(GluReq)+"</td></tr></table>"
+                            current_output["Nitrogen source<br>(g/g plant)"] = "<table>"\
+                                '<tr><td>Plant N [estimated]</td><td>'+"{:.2f}".format(PlantN)+"</td></tr>"+ \
+                                '<tr><td>N from NH4-N</td><td>'+"{:.2f}".format(N_NH4)+"</td></tr>"+ \
+                                '<tr><td>N from NO3-N</td><td>'+"{:.2f}".format(N_NO3)+"</td></tr>"+ \
+                                '<tr><td>N from  N2-N</td><td>'+"{:.2f}".format(N_N2)+"</td></tr>"+ \
+                                '<tr><td>N assimilation cost</td><td>'+"{:.2f}".format(GRNacq)+"</td></tr></table>"
+                            current_output["Hemicellulose fraction<br>(g/g plant)"] = "<table>"\
+                                '<tr><td>HemiC</td><td>'+"{:.2f}".format(HemiC)+"</td></tr>"+ \
+                                '<tr><td>HemiD</td><td>'+"{:.2f}".format(HemiD)+"</td></tr>"+ \
+                                '<tr><td>HemiG</td><td>'+"{:.2f}".format(HemiG)+"</td></tr></table>"
+                            current_output["Monomer lignin fraction<br>(g/g plant)"] = "<table>"\
+                                '<tr><td>Coumaryl</td><td>'+"{:.2f}".format(Coumrl)+"</td></tr>"+ \
+                                '<tr><td>Coniferyl</td><td>'+"{:.2f}".format(Conifr)+"</td></tr>"+ \
+                                '<tr><td>Sinapyl</td><td>'+"{:.2f}".format(Sinapl)+"</td></tr></table>"
+                            current_output["Organic acid fraction<br>(g/g plant)"] = "<table>"\
+                                '<tr><td>Aconitic citric</td><td>'+"{:.2f}".format(AcoCit)+"</td></tr>"+ \
+                                '<tr><td>Malic oxaloacetic</td><td>'+"{:.2f}".format(MalOxa)+"</td></tr>"+ \
+                                '<tr><td>Oxalic</td><td>'+"{:.2f}".format(Oxalic)+"</td></tr></table>"
                             current_output["Growth yield results"] = \
-                                str(GluReq)+" (g glucose/g plant)<br>"+ \
-                                str(1./GluReq)+" (g plant/g glucose)"
+                                "{:.2f}".format(GluReq)+" (g glucose/g plant)<br>"+ \
+                                "{:.2f}".format(1./GluReq)+" (g plant/g glucose)"
                             result_table = result_table.append(current_output, ignore_index = True)
+        
+        column_list = ["Biomass composition","Nitrogen source<br>(g/g plant)","Hemicellulose fraction<br>(g/g plant)","Monomer lignin fraction<br>(g/g plant)","Organic acid fraction<br>(g/g plant)","Growth yield results"]
+        html_data = f"""
+            <html>
+            <header>
+                <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
+            </header>
+            <body>
+            {result_table.to_html(columns=column_list,escape=False,notebook=False,table_id="table",index=False,justify="left")}
+            <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+            <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+            <script>
+                $(document).ready( function () {{
+                    $('#table').DataTable({{
+                        // paging: false,    
+                        // scrollY: 400,
+                    }});
+                }});
+            </script>
+            </body>
+            </html>
+            """
         report_name = str(uuid.uuid4())
         workspace = None
         if isinstance(params["workspace"], str):
@@ -213,7 +243,7 @@ class QuantitativePlantAnalysis:
         html_report_folder = os.path.join(self.shared_folder, 'htmlreport')
         os.makedirs(html_report_folder, exist_ok=True)
         with open(os.path.join(html_report_folder, 'index.html'), 'w') as f:
-            f.write(result_table.to_html(escape=False,notebook=False))
+            f.write(html_data)
         report_shock_id = self.dfu.file_to_shock({'file_path': html_report_folder,'pack': 'zip'})['shock_id']
         html_output = {
             'name' : 'index.html',
