@@ -4,7 +4,7 @@
 name     : Predict Plant Biomass Yield from Glucose 
 
 tooltip  : |
-    Predict plant biomass yeild from glucose
+    Estimate amount of plant biomass production possible from a unit of substrate used in growth processes based on stoichiometries of anabolic pathways and supporting processes.
 
 screenshots : []
 
@@ -173,51 +173,51 @@ icon: modelseed-teal.png
 
 description : |
 
-    <p>TODO</p>
-
+    <p>This App estimates maximal (potential) yield of plant growth processes based on composition of biomass grown. The issue is along the lines of determining how much a plant can grow heterotrophically from a carbon substrate such as sucrose--a main product of photosynthesis--and nutrients necessary to the plant. The process was first fully developed by Penning de Vries (1972; and Penning de Vries et al. 1974) and has been extended and improved over time as knowledge of anabolic pathways and supporting processes matured; a list of related publications is below. It is primarily concerned with the major biomass fractions of a plant that contribute quantitatively to efficiency of biosynthesis. It is fundamentally limited only by knowledge of plant composition and the pathways of biosynthesis and related processes such as energy-requiring intra- and inter-cellular transport processes and maintenance of the tools of growth such as RNA and enzymes.</p>
+    <p>The method is to sum the equations describing the formation, from appropriate substrates, of the compounds produced during growth in proportion to biomass composition. A consideration of additional metabolism, most notably respiration, must be made to account for the supply of any shortfall in reducing equivalents or ATP needed for biosynthesis and coupled processes that is not provided by the biosynthetic pathways themselves. Comparing the total substrate consumed to products produced is then a measure of the (potential) efficiency of plant growth. It can be used to explain differences in production efficiency of plants or plant parts that differ in composition. For example, why and how much the differences may be between growth of a unit mass of a seed with a high lipid concentration (expensive to grow) and a tuber containing mostly storage carbohydrates (inexpensive to grow). Often, the method is used to estimate the mass (dry) of a plant or plant part grown from a unit mass of substrate (e.g., 1 gram of sucrose and required minerals), but often more biologically or ecologically meaningful are ratios between the energy content of the substrate (heat of combustion) and the fraction of the energy retained in the new biomass produced. This allows more meaningful comparisons of, for example, the high-lipid seed and high-carbohydrate tuber, since more tuber can grow from a unit mass of carbohydrate substrate, yet the energy stored in the high-lipid seed may be more relevant to several downstream processes, including relationships between the plant and other organisms consuming it.</p>
+    <p>The approach can be used at any level from whole crops down to individual cells or even organelles. The core calculations are at the biochemical level, but as the spatial scale is increased additional factors can be considered. For example, for a growing cell with access to local substrate the focus is strictly on ‘local’ processes of constructing macromolecules from a carbon source and any required minerals nutrients. At a large scale, however, such as a whole plant, consideration of the cost of transporting carbon substrate from sources -- such as leaves generating starch and sucrose during photosynthesis -- to growing cells can be included in definition of growth cost. Similarly, the cost of nutrient uptake from the soil, its assimilation (e.g., chemical reduction of nitrate absorbed from the soil solution), and transport to growing cells, including those at the top of the shoot should be factored into the estimate of efficiency of biomass production.</p>
+    <p>The current version of the App requests information on the composition of the phytomass being grown and the source of nitrogen. It is assumed that sucrose is the carbon substrate; other common quantitatively important substrates in most plants produce similar results, though there are important nuances for some substrate-product combinations. The App assumes, in this version that, mineral nutrients adequately supplied from the soil solution and that generally efficient biosynthetic pathways are being used by the plant. Current research would indicate that to be the case, in general. The App produces a listing of substrate requirements for the growth of each phytomass component and the aggregate of all components. Any costs of mineral uptake and nitrogen assimilation are also generated. The intent is to allow the user to ask ‘what if’ questions about implications of changes in phytomass composition on substrate requirements for growth. Basically, given and amount of photosynthetically generated carbohydrate (and assuming soil nutrients are adequate) how much plant could be grown of different compositions. This is important, for example, in crops being breed for different compositions to better match dietary needs (and desires).</p>
 
 publications :
     -
         display-text: |
             [1] Amthor JS. 2000. The McCree–de Wit–Penning de Vries–Thornley respiration paradigms: 30 years later. Annals of Botany 86: 1-20.
-        link: https://www.ncbi.nlm.nih.gov/
+        link: https://academic.oup.com/aob/article/86/1/1/2588209
 
     -
         display-text: |
             [2] Amthor JS. 2003. Efficiency of lignin biosynthesis: a quantitative analysis. Annals of Botany 91: 673-695.
-        link: https://www.ncbi.nlm.nih.gov/
+        link: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4242356/
 
     -
         display-text: |
             [3] Amthor JS. 2010. From sunlight to phytomass: on the potential efficiency of converting solar radiation to phyto-energy. New Phytologist 188: 939-959.
-        link: https://www.ncbi.nlm.nih.gov/
+        link: https://nph.onlinelibrary.wiley.com/doi/10.1111/j.1469-8137.2010.03505.x
 
     -
         display-text: |
             [4] Penning de Vries FWT. 1992. Respiration and growth. In: Rees AR, Cockshull KE, Hand DW, Hurd RG (eds) Crop Processes in Controlled Environments. London and New York: Academic Press.
-        link: https://www.ncbi.nlm.nih.gov/
 
     -
         display-text: |
             [5] Penning de Vries FWT, Brunsting AHM, van Laar HH. 1974. Products, requirements and efficiency of biosynthesis a quantitative approach. Journal of Theoretical Biology 45: 339-377.
-        link: https://www.ncbi.nlm.nih.gov/
+        link: https://www.sciencedirect.com/science/article/abs/pii/0022519374901192
     
     -
         display-text: |
             [6] Thornley JHM, France J. 2007. Mathematical Models in Agriculture, 2nd ed. Wallingford, UK: CABI.
-        link: https://www.ncbi.nlm.nih.gov/
+        link: https://www.google.com/books/edition/Mathematical_Models_in_Agriculture/rlwBCRSHobcC?hl=en&gbpv=1&printsec=frontcover
     
     -
         display-text: |
             [7] Thornley JHM, Johnson IR. 1990. Plant and Crop Modeling. Oxford, UK: Oxford University Press.
-        link: https://www.ncbi.nlm.nih.gov/
     
     -
         display-text: |
             [8] Williams K, Percival F, Merino J, Mooney HA. 1987. Estimation of tissue construction cost from heat of combustion and organic nitrogen content. Plant, Cell and Environment 10: 725-734.
-        link: https://www.ncbi.nlm.nih.gov/
+        link: https://onlinelibrary.wiley.com/doi/10.1111/1365-3040.ep11604754
     
     -
         display-text: |
             [9] Zerihun A, McKenzie BA, Morton JD. 1998. Photosynthate costs associated with the utilization of different nitrogen forms: influence on the carbon balance of plants and shoot–root biomass partitioning. New Phytologist 138: 1-11.
-        link: https://www.ncbi.nlm.nih.gov/
+        link: https://nph.onlinelibrary.wiley.com/doi/10.1046/j.1469-8137.1998.00893.x
