@@ -71,7 +71,6 @@ class QuantitativePlantAnalysis:
         # return variables are: output
         #BEGIN compute_plant_biomass_yield
         #Processing parameters
-        print("One:"+json.dumps(params,indent=4)+"\n\n")
         params = SDKHelper.validate_args(params,["workspace"],{
             "biomass_composition":[],
             "nitrogen_source":[],
@@ -144,12 +143,12 @@ class QuantitativePlantAnalysis:
                 GRNacq = NH4upt * N_NH4 + (NO3upt + NO3asm) * N_NO3 + (N2asm + N2tran) * N_N2
                 
                 if len(params["hemicellulose_fraction"]) == 0:
-                    params["hemicellulose_fraction"] = [{"HemiC":0.6,"HemiD":0.2,"HemiG":0.3}]
+                    params["hemicellulose_fraction"] = [{"hemic":0.6,"hemid":0.2,"hemig":0.3}]
                 for hf in params["hemicellulose_fraction"]:
                     #Setting variables and normalizing
-                    HemiC  = hf["HemiC"]
-                    HemiD  = hf["HemiD"]
-                    HemiG  = hf["HemiG"]
+                    HemiC  = hf["hemic"]
+                    HemiD  = hf["hemid"]
+                    HemiG  = hf["hemig"]
                     Total = HemiC  + HemiD + HemiG
                     HemiC  = HemiC  / Total
                     HemiD  = HemiD  / Total
@@ -275,7 +274,6 @@ class QuantitativePlantAnalysis:
         }
         report = KBaseReport(self.callback_url, token=ctx['token'])
         repout = report.create_extended_report(report_params)
-        print("Two:"+json.dumps(params,indent=4)+"\n\n")
         output = {"report_name":report_name,"report_ref":repout["ref"],'workspace_name':workspace}
         #END compute_plant_biomass_yield
 

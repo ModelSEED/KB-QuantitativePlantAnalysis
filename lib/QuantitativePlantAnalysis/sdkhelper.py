@@ -18,6 +18,7 @@ class SDKHelper:
             
     @staticmethod
     def validate_args(params,required,defaults):
+        #print("One:"+json.dumps(params,indent=4)+"\n\n")
         for item in required:
             if item not in params:
                 raise ValueError('Required argument '+item+' is missing!')
