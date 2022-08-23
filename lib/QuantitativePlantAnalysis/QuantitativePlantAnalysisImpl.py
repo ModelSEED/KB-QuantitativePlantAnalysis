@@ -4,6 +4,7 @@ import logging
 import sys
 import os
 import uuid
+import json
 from os.path import exists
 import pandas as pd
 from QuantitativePlantAnalysis.sdkhelper import SDKHelper
@@ -70,13 +71,14 @@ class QuantitativePlantAnalysis:
         # return variables are: output
         #BEGIN compute_plant_biomass_yield
         #Processing parameters
-        SDKHelper.validate_args(params,["workspace"],{
+        params = SDKHelper.validate_args(params,["workspace"],{
             "biomass_composition":[],
             "nitrogen_source":[],
             "hemicellulose_fraction":[],
             "monomer_lignin_fraction":[],
             "organic_acid_fraction":[]
         })
+        print("One:"+json.dumps(params,indent=4)+"\n\n")
         #Constants
         ATPyld,NADPHy,hexose,Nmass = 28.0,11.5,180.1559,14.0067
         NfracP,NH4upt,NO3upt = 0.1709,0.0,3. * hexose / (Nmass * ATPyld)
@@ -208,9 +210,9 @@ class QuantitativePlantAnalysis:
                                 '<tr><td>N from  N2-N</td><td>'+format_numbers(N_N2)+"</td></tr>"+ \
                                 '<tr><td>N assimilation cost</td><td>'+format_numbers(GRNacq)+"</td></tr></table>"
                             current_output["Hemicellulose fraction<br>(g/g plant)"] = "<table>"\
-                                '<tr><td>HemiC</td><td>'+format_numbers(HemiC)+"</td></tr>"+ \
-                                '<tr><td>HemiD</td><td>'+format_numbers(HemiD)+"</td></tr>"+ \
-                                '<tr><td>HemiG</td><td>'+format_numbers(HemiG)+"</td></tr></table>"
+                                '<tr><td>Hemi conifer</td><td>'+format_numbers(HemiC)+"</td></tr>"+ \
+                                '<tr><td>Hemi dicot</td><td>'+format_numbers(HemiD)+"</td></tr>"+ \
+                                '<tr><td>Hemi grass</td><td>'+format_numbers(HemiG)+"</td></tr></table>"
                             current_output["Monomer lignin fraction<br>(g/g plant)"] = "<table>"\
                                 '<tr><td>Coumaryl</td><td>'+format_numbers(Coumrl)+"</td></tr>"+ \
                                 '<tr><td>Coniferyl</td><td>'+format_numbers(Conifr)+"</td></tr>"+ \
@@ -273,6 +275,7 @@ class QuantitativePlantAnalysis:
         }
         report = KBaseReport(self.callback_url, token=ctx['token'])
         repout = report.create_extended_report(report_params)
+        print("Two:"+json.dumps(params,indent=4)+"\n\n")
         output = {"report_name":report_name,"report_ref":repout["ref"],'workspace_name':workspace}
         #END compute_plant_biomass_yield
 
