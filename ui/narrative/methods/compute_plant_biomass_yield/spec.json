@@ -365,88 +365,24 @@
                     "narrative_system_variable": "workspace"
                 },
                 {
-                    "input_parameter": "cellulose",
-                    "target_property": "cellulose"
+                    "input_parameter": "biomass_composition",
+                    "target_property": "biomass_composition"
                 },
                 {
-                    "input_parameter": "hemicellulose",
-                    "target_property": "hemicellulose"
+                    "input_parameter": "nitrogen_source",
+                    "target_property": "nitrogen_source"
                 },
                 {
-                    "target_property": "starch",
-                    "input_parameter": "starch"
+                    "target_property": "hemicellulose_fraction",
+                    "input_parameter": "hemicellulose_fraction"
                 },
                 {
-                    "target_property": "sugars",
-                    "input_parameter": "sugars"
+                    "target_property": "monomer_lignin_fraction",
+                    "input_parameter": "monomer_lignin_fraction"
                 },
                 {
-                    "target_property": "lignin",
-                    "input_parameter": "lignin"
-                },
-                {
-                    "target_property": "lipid",
-                    "input_parameter": "lipid"
-                },
-                {
-                    "target_property": "protein",
-                    "input_parameter": "protein"
-                },
-                {
-                    "target_property": "organic_acid",
-                    "input_parameter": "organic_acid"
-                },
-                {
-                    "target_property": "minerals",
-                    "input_parameter": "minerals"
-                },
-                {
-                    "target_property": "HemiC",
-                    "input_parameter": "hemic"
-                },
-                {
-                    "target_property": "HemiD",
-                    "input_parameter": "hemid"
-                },
-                {
-                    "target_property": "HemiG",
-                    "input_parameter": "hemig"
-                },
-                {
-                    "target_property": "nh4",
-                    "input_parameter": "nh4"
-                },
-                {
-                    "target_property": "no3",
-                    "input_parameter": "no3"
-                },
-                {
-                    "target_property": "n2",
-                    "input_parameter": "n2"
-                },
-                {
-                    "target_property": "coumaryl",
-                    "input_parameter": "coumaryl"
-                },
-                {
-                    "target_property": "coniferyl",
-                    "input_parameter": "coniferyl"
-                },
-                {
-                    "target_property": "sinapyl",
-                    "input_parameter": "sinapyl"
-                },
-                {
-                    "target_property": "aconitic_citric",
-                    "input_parameter": "aconitic_citric"
-                },
-                {
-                    "target_property": "malic_oxaloacetic",
-                    "input_parameter": "malic_oxaloacetic"
-                },
-                {
-                    "target_property": "oxalic",
-                    "input_parameter": "oxalic"
+                    "target_property": "organic_acid_fraction",
+                    "input_parameter": "organic_acid_fraction"
                 }
             ],
             "output_mapping": [
