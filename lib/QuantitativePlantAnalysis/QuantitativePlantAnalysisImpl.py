@@ -71,6 +71,7 @@ class QuantitativePlantAnalysis:
         # return variables are: output
         #BEGIN compute_plant_biomass_yield
         #Processing parameters
+        print("One:"+json.dumps(params,indent=4)+"\n\n")
         params = SDKHelper.validate_args(params,["workspace"],{
             "biomass_composition":[],
             "nitrogen_source":[],
@@ -78,7 +79,6 @@ class QuantitativePlantAnalysis:
             "monomer_lignin_fraction":[],
             "organic_acid_fraction":[]
         })
-        print("One:"+json.dumps(params,indent=4)+"\n\n")
         #Constants
         ATPyld,NADPHy,hexose,Nmass = 28.0,11.5,180.1559,14.0067
         NfracP,NH4upt,NO3upt = 0.1709,0.0,3. * hexose / (Nmass * ATPyld)
