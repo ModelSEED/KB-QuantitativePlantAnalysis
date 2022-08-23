@@ -101,11 +101,23 @@ parameters :
         short-hint : |
             Relative abundance of N2 as nitrogen source
 
-    plant_type :
+    hemic :
         ui-name : |
-            plant_type
+            Hemi conifer
         short-hint : |
-            Plant type
+            Hemi conifer
+            
+    hemid :
+        ui-name : |
+            Hemi dicot
+        short-hint : |
+            Hemi dicot
+            
+    hemig :
+        ui-name : |
+            Hemi grass
+        short-hint : |
+            Hemi grass
 
     coumaryl :
         ui-name : |
@@ -157,7 +169,7 @@ parameter-groups:
     ui-name: |
       Hemicellulose fraction
     short-hint: |
-      Select plant type from which hemicellulose fraction will be computed.
+      Select the breakdown of hemicellose in plant
   monomer_lignin_fraction:
     ui-name: |
       Monomer lignin fraction

@@ -10,6 +10,17 @@ from QuantitativePlantAnalysis.sdkhelper import SDKHelper
 from installed_clients.KBaseReportClient import KBaseReport
 from installed_clients.DataFileUtilClient import DataFileUtil
 from installed_clients.WorkspaceClient import Workspace as Workspace
+
+def format_numbers(number):
+    if number < 0.0001:
+        return "{:.6f}".format(number)
+    if number < 0.001:
+        return "{:.5f}".format(number)
+    if number < 0.01:
+        return "{:.4f}".format(number)
+    if number < 0.1:
+        return "{:.3f}".format(number)
+    return "{:.2f}".format(number)
 #END_HEADER
 
 
@@ -179,38 +190,38 @@ class QuantitativePlantAnalysis:
                             current_output = {}
                             current_output["Biomass composition"] = "<table>"\
                                 '<tr><th>Biomass constituent</th><th>Fraction</th><th>GluReq</th></tr>'+ \
-                                '<tr><td>Cellulose</td><td>'+"{:.2f}".format(Cellul)+"</td><td>"+"{:.2f}".format(GRcell)+"</td></tr>"+ \
-                                '<tr><td>Hemicelluloses</td><td>'+"{:.2f}".format(Hemice)+"</td><td>"+"{:.2f}".format(GRhemi)+"</td></tr>"+ \
-                                '<tr><td>Starch</td><td>'+"{:.2f}".format(Starch)+"</td><td>"+"{:.2f}".format(GRstar)+"</td></tr>"+ \
-                                '<tr><td>Sugars</td><td>'+"{:.2f}".format(Sugars)+"</td><td>"+"{:.2f}".format(GRsugr)+"</td></tr>"+ \
-                                '<tr><td>Lignins</td><td>'+"{:.2f}".format(Lignin)+"</td><td>"+"{:.2f}".format(GRlign)+"</td></tr>"+ \
-                                '<tr><td>Lipids</td><td>'+"{:.2f}".format(Lipids)+"</td><td>"+"{:.2f}".format(GRlipd)+"</td></tr>"+ \
-                                '<tr><td>Protein</td><td>'+"{:.2f}".format(Proten)+"</td><td>"+"{:.2f}".format(GRprot)+"</td></tr>"+ \
-                                '<tr><td>Organic Acids</td><td>'+"{:.2f}".format(OrAcid)+"</td><td>"+"{:.2f}".format(GRoa)+"</td></tr>"+ \
-                                '<tr><td>Minerals</td><td>'+"{:.2f}".format(Minerl)+"</td><td>"+"{:.2f}".format(GRminl)+"</td></tr>"+ \
-                                '<tr><td>N uptake/assimilation</td><td>'+str(0.0)+"</td><td>"+"{:.2f}".format(GRNacq)+"</td></tr>"+ \
-                                '<tr><td>TOTAL</td><td>'+"{:.2f}".format(NewTot)+"</td><td>"+"{:.2f}".format(GluReq)+"</td></tr></table>"
+                                '<tr><td>Cellulose</td><td>'+format_numbers(Cellul)+"</td><td>"+format_numbers(GRcell)+"</td></tr>"+ \
+                                '<tr><td>Hemicelluloses</td><td>'+format_numbers(Hemice)+"</td><td>"+format_numbers(GRhemi)+"</td></tr>"+ \
+                                '<tr><td>Starch</td><td>'+format_numbers(Starch)+"</td><td>"+format_numbers(GRstar)+"</td></tr>"+ \
+                                '<tr><td>Sugars</td><td>'+format_numbers(Sugars)+"</td><td>"+format_numbers(GRsugr)+"</td></tr>"+ \
+                                '<tr><td>Lignins</td><td>'+format_numbers(Lignin)+"</td><td>"+format_numbers(GRlign)+"</td></tr>"+ \
+                                '<tr><td>Lipids</td><td>'+format_numbers(Lipids)+"</td><td>"+format_numbers(GRlipd)+"</td></tr>"+ \
+                                '<tr><td>Protein</td><td>'+format_numbers(Proten)+"</td><td>"+format_numbers(GRprot)+"</td></tr>"+ \
+                                '<tr><td>Organic Acids</td><td>'+format_numbers(OrAcid)+"</td><td>"+format_numbers(GRoa)+"</td></tr>"+ \
+                                '<tr><td>Minerals</td><td>'+format_numbers(Minerl)+"</td><td>"+format_numbers(GRminl)+"</td></tr>"+ \
+                                '<tr><td>N uptake/assimilation</td><td>'+str(0.0)+"</td><td>"+format_numbers(GRNacq)+"</td></tr>"+ \
+                                '<tr><td>TOTAL</td><td>'+format_numbers(NewTot)+"</td><td>"+format_numbers(GluReq)+"</td></tr></table>"
                             current_output["Nitrogen source<br>(g/g plant)"] = "<table>"\
-                                '<tr><td>Plant N [estimated]</td><td>'+"{:.2f}".format(PlantN)+"</td></tr>"+ \
-                                '<tr><td>N from NH4-N</td><td>'+"{:.2f}".format(N_NH4)+"</td></tr>"+ \
-                                '<tr><td>N from NO3-N</td><td>'+"{:.2f}".format(N_NO3)+"</td></tr>"+ \
-                                '<tr><td>N from  N2-N</td><td>'+"{:.2f}".format(N_N2)+"</td></tr>"+ \
-                                '<tr><td>N assimilation cost</td><td>'+"{:.2f}".format(GRNacq)+"</td></tr></table>"
+                                '<tr><td>Plant N [estimated]</td><td>'+format_numbers(PlantN)+"</td></tr>"+ \
+                                '<tr><td>N from NH4-N</td><td>'+format_numbers(N_NH4)+"</td></tr>"+ \
+                                '<tr><td>N from NO3-N</td><td>'+format_numbers(N_NO3)+"</td></tr>"+ \
+                                '<tr><td>N from  N2-N</td><td>'+format_numbers(N_N2)+"</td></tr>"+ \
+                                '<tr><td>N assimilation cost</td><td>'+format_numbers(GRNacq)+"</td></tr></table>"
                             current_output["Hemicellulose fraction<br>(g/g plant)"] = "<table>"\
-                                '<tr><td>HemiC</td><td>'+"{:.2f}".format(HemiC)+"</td></tr>"+ \
-                                '<tr><td>HemiD</td><td>'+"{:.2f}".format(HemiD)+"</td></tr>"+ \
-                                '<tr><td>HemiG</td><td>'+"{:.2f}".format(HemiG)+"</td></tr></table>"
+                                '<tr><td>HemiC</td><td>'+format_numbers(HemiC)+"</td></tr>"+ \
+                                '<tr><td>HemiD</td><td>'+format_numbers(HemiD)+"</td></tr>"+ \
+                                '<tr><td>HemiG</td><td>'+format_numbers(HemiG)+"</td></tr></table>"
                             current_output["Monomer lignin fraction<br>(g/g plant)"] = "<table>"\
-                                '<tr><td>Coumaryl</td><td>'+"{:.2f}".format(Coumrl)+"</td></tr>"+ \
-                                '<tr><td>Coniferyl</td><td>'+"{:.2f}".format(Conifr)+"</td></tr>"+ \
-                                '<tr><td>Sinapyl</td><td>'+"{:.2f}".format(Sinapl)+"</td></tr></table>"
+                                '<tr><td>Coumaryl</td><td>'+format_numbers(Coumrl)+"</td></tr>"+ \
+                                '<tr><td>Coniferyl</td><td>'+format_numbers(Conifr)+"</td></tr>"+ \
+                                '<tr><td>Sinapyl</td><td>'+format_numbers(Sinapl)+"</td></tr></table>"
                             current_output["Organic acid fraction<br>(g/g plant)"] = "<table>"\
-                                '<tr><td>Aconitic citric</td><td>'+"{:.2f}".format(AcoCit)+"</td></tr>"+ \
-                                '<tr><td>Malic oxaloacetic</td><td>'+"{:.2f}".format(MalOxa)+"</td></tr>"+ \
-                                '<tr><td>Oxalic</td><td>'+"{:.2f}".format(Oxalic)+"</td></tr></table>"
+                                '<tr><td>Aconitic citric</td><td>'+format_numbers(AcoCit)+"</td></tr>"+ \
+                                '<tr><td>Malic oxaloacetic</td><td>'+format_numbers(MalOxa)+"</td></tr>"+ \
+                                '<tr><td>Oxalic</td><td>'+format_numbers(Oxalic)+"</td></tr></table>"
                             current_output["Growth yield results"] = \
-                                "{:.2f}".format(GluReq)+" (g glucose/g plant)<br>"+ \
-                                "{:.2f}".format(1./GluReq)+" (g plant/g glucose)"
+                                format_numbers(GluReq)+" (g glucose/g plant)<br>"+ \
+                                format_numbers(1./GluReq)+" (g plant/g glucose)"
                             result_table = result_table.append(current_output, ignore_index = True)
         
         column_list = ["Biomass composition","Nitrogen source<br>(g/g plant)","Hemicellulose fraction<br>(g/g plant)","Monomer lignin fraction<br>(g/g plant)","Organic acid fraction<br>(g/g plant)","Growth yield results"]

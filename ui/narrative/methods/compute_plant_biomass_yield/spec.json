@@ -47,7 +47,7 @@
         {
             "id": "hemicellulose_fraction",
             "parameters": [
-                "plant_type"
+                "hemic","hemid","hemig"
             ],
             "optional": true,
             "advanced": false,
@@ -237,6 +237,45 @@
 			"advanced" : false
       	},
       	{
+        	"id" : "hemic",
+			"field_type" : "text",
+         	"default_values" : [
+            	"0.6"
+         	],
+         	"text_options" : {
+				"validate_as" : "float"
+			},
+			"allow_multiple" : false,
+			"optional" : false,
+			"advanced" : false
+      	},
+      	{
+        	"id" : "hemid",
+			"field_type" : "text",
+         	"default_values" : [
+            	"0.2"
+         	],
+         	"text_options" : {
+				"validate_as" : "float"
+			},
+			"allow_multiple" : false,
+			"optional" : false,
+			"advanced" : false
+      	},
+      	{
+        	"id" : "hemig",
+			"field_type" : "text",
+         	"default_values" : [
+            	"0.3"
+         	],
+         	"text_options" : {
+				"validate_as" : "float"
+			},
+			"allow_multiple" : false,
+			"optional" : false,
+			"advanced" : false
+      	},
+      	{
         	"id" : "coumaryl",
 			"field_type" : "text",
          	"default_values" : [
@@ -313,39 +352,7 @@
 			"allow_multiple" : false,
 			"optional" : false,
 			"advanced" : false
-      	},
-        {
-            "id": "plant_type",
-            "field_type": "dropdown",
-            "default_values": [
-                "Conifer"
-            ],
-            "dropdown_options": {
-                "options": [
-                    {
-                        "id": "Conifer",
-                        "display": "Conifer",
-                        "ui_name": "Conifer",
-                        "value": "Conifer"
-                    },
-                    {
-                        "value": "Dicot",
-                        "ui_name": "Dicot",
-                        "display": "Dicot",
-                        "id": "Dicot"
-                    },
-                    {
-                        "id": "Grass",
-                        "value": "Grass",
-                        "ui_name": "Grass",
-                        "display": "Grass"
-                    }
-                ]
-            },
-            "allow_multiple": true,
-            "optional": true,
-            "advanced": true
-        }
+      	}
     ],
     "behavior": {
         "service-mapping": {
@@ -394,8 +401,16 @@
                     "input_parameter": "minerals"
                 },
                 {
-                    "target_property": "plant_type",
-                    "input_parameter": "plant_type"
+                    "target_property": "hemic",
+                    "input_parameter": "HemiC"
+                },
+                {
+                    "target_property": "hemid",
+                    "input_parameter": "HemiD"
+                },
+                {
+                    "target_property": "hemig",
+                    "input_parameter": "HemiG"
                 },
                 {
                     "target_property": "nh4",
