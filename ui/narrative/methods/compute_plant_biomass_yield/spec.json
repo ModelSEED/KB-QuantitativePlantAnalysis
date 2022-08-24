@@ -77,6 +77,18 @@
             "advanced": false,
             "allow_multiple": true,
             "with_border": true
+        },
+        {
+            "id": "transport_costs",
+            "parameters": [
+                "cost_selection",
+                "fraction_starch",
+                "membrane_crossings"
+            ],
+            "optional": true,
+            "advanced": false,
+            "allow_multiple": true,
+            "with_border": true
         }
     ],
     "parameters": [
@@ -352,6 +364,103 @@
 			"allow_multiple" : false,
 			"optional" : false,
 			"advanced" : false
+      	},
+      	{
+        	"id" : "fraction_starch",
+			"field_type" : "text",
+         	"default_values" : [
+            	"0.5"
+         	],
+         	"text_options" : {
+				"validate_as" : "float"
+			},
+			"allow_multiple" : false,
+			"optional" : false,
+			"advanced" : false
+      	},
+      	{
+			"id" : "cost_selection",
+			"field_type" : "dropdown",
+			"default_values" : ["exclude"],
+			"text_options" : {
+				"valid_ws_types" : []
+			},
+			"allow_multiple" : false,
+			"optional" : false,
+			"advanced" : false,
+			"dropdown_options" : {
+				"options" : [
+					{
+						"id" : "exclude",
+						"display" : "Exclude transport costs",
+						"ui_name" : "Exclude transport costs",
+						"value" : "exclude"
+					},
+					{
+						"value" : "trans_phloem",
+						"ui_name" : "Transport costs with phloem loading",
+						"display" : "Transport costs with phloem loading",
+						"id" : "trans_phloem"
+					},
+					{
+						"value" : "trans_no_phloem",
+						"ui_name" : "Transport costs for starch only",
+						"display" : "Transport costs for starch only",
+						"id" : "trans_no_phloem"
+					}
+				]
+			}
+      	},
+      	{
+			"id" : "membrane_crossings",
+			"field_type" : "dropdown",
+			"default_values" : ["1"],
+			"text_options" : {
+				"valid_ws_types" : []
+			},
+			"allow_multiple" : false,
+			"optional" : false,
+			"advanced" : false,
+			"dropdown_options" : {
+				"options" : [
+					{
+						"id" : "0",
+						"display" : "0",
+						"ui_name" : "0",
+						"value" : "0"
+					},
+					{
+						"value" : "1",
+						"ui_name" : "1",
+						"display" : "1",
+						"id" : "1"
+					},
+					{
+						"value" : "2",
+						"ui_name" : "2",
+						"display" : "2",
+						"id" : "2"
+					},
+					{
+						"value" : "3",
+						"ui_name" : "3",
+						"display" : "3",
+						"id" : "3"
+					},
+					{
+						"value" : "4",
+						"ui_name" : "4",
+						"display" : "4",
+						"id" : "4"
+					},
+					{
+						"value" : "5",
+						"ui_name" : "5",
+						"display" : "5",
+						"id" : "5"
+					}
+				]
+			}
       	}
     ],
     "behavior": {
@@ -383,6 +492,10 @@
                 {
                     "target_property": "organic_acid_fraction",
                     "input_parameter": "organic_acid_fraction"
+                },
+                {
+                    "target_property": "transport_costs",
+                    "input_parameter": "transport_costs"
                 }
             ],
             "output_mapping": [

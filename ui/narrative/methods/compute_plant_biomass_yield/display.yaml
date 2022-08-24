@@ -154,6 +154,24 @@ parameters :
             Oxalic
         short-hint : |
             Relative abundance of oxalic in organic acids
+            
+    cost_selection :
+        ui-name : |
+            Cost selection
+        short-hint : |
+            Options for accounting for transport costs
+
+    fraction_starch :
+        ui-name : |
+            Fraction of starch
+        short-hint : |
+            Fraction of carbohydrate substrate that is starch
+
+    membrane_crossings :
+        ui-name : |
+            Membrane crossings
+        short-hint : |
+            Active membrane crossings between source and sink 
 parameter-groups:
   biomass_composition:
     ui-name: |
@@ -180,6 +198,11 @@ parameter-groups:
       Organic acid fraction
     short-hint: |
       Relative abundance of organic acids in plant.
+  transport_costs:
+    ui-name: |
+      Transport costs
+    short-hint: |
+      Parameters associated with accounting for transport costs.
 
 icon: modelseed-teal.png
 
