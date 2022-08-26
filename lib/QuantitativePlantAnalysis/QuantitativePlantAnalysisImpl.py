@@ -257,7 +257,7 @@ class QuantitativePlantAnalysis:
                                     '<tr><td>Total req<br>(g/g plant)</td><td>'+format_numbers(TransCost+GluReq)+"</td></tr>"+ \
                                     '<tr><td>Yield req<br>(g plant/g glucose)</td><td>'+format_numbers(1./(TransCost+GluReq))+"</td></tr></table>"
                                 result_table = result_table.append(current_output, ignore_index = True)
-        column_list = ["Biomass composition","Nitrogen source<br>(g/g plant)","Hemicellulose fraction<br>(g/g plant)","Monomer lignin fraction<br>(g/g plant)","Organic acid fraction<br>(g/g plant)","Growth yield results"]
+        column_list = ["Biomass composition","Nitrogen source<br>(g/g plant N)","Hemicellulose fraction<br>(g/g plant)","Monomer lignin fraction<br>(g/g plant)","Organic acid fraction<br>(g/g plant)","Growth yield results"]
         html_data = f"""
             <html>
             <header>
