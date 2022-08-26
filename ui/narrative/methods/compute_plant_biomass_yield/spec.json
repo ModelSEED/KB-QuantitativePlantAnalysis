@@ -409,7 +409,7 @@
       	{
 			"id" : "cost_selection",
 			"field_type" : "dropdown",
-			"default_values" : ["exclude"],
+			"default_values" : ["trans_phloem"],
 			"text_options" : {
 				"valid_ws_types" : []
 			},
