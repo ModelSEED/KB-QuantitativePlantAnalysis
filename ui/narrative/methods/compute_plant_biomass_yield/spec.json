@@ -18,6 +18,8 @@
             "id": "biomass_composition",
             "parameters": [
                 "cellulose",
+                "sporopollenin",
+                "suberin",
                 "hemicellulose",
                 "starch",
                 "sugars",
@@ -97,6 +99,32 @@
 			"field_type" : "text",
          	"default_values" : [
             	"0.33"
+         	],
+         	"text_options" : {
+				"validate_as" : "float"
+			},
+			"allow_multiple" : false,
+			"optional" : false,
+			"advanced" : false
+      	},
+      	{
+        	"id" : "sporopollenin",
+			"field_type" : "text",
+         	"default_values" : [
+            	"0.0"
+         	],
+         	"text_options" : {
+				"validate_as" : "float"
+			},
+			"allow_multiple" : false,
+			"optional" : false,
+			"advanced" : false
+      	},
+      	{
+        	"id" : "suberin",
+			"field_type" : "text",
+         	"default_values" : [
+            	"0.0"
          	],
          	"text_options" : {
 				"validate_as" : "float"
@@ -390,12 +418,6 @@
 			"advanced" : false,
 			"dropdown_options" : {
 				"options" : [
-					{
-						"id" : "exclude",
-						"display" : "Exclude transport costs",
-						"ui_name" : "Exclude transport costs",
-						"value" : "exclude"
-					},
 					{
 						"value" : "trans_phloem",
 						"ui_name" : "Transport costs with phloem loading",

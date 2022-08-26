@@ -76,7 +76,8 @@ class QuantitativePlantAnalysis:
             "nitrogen_source":[],
             "hemicellulose_fraction":[],
             "monomer_lignin_fraction":[],
-            "organic_acid_fraction":[]
+            "organic_acid_fraction":[],
+            "transport_costs":[]
         })
         #Constants
         ATPyld,NADPHy,hexose,Nmass = 28.0,11.5,180.1559,14.0067
@@ -85,18 +86,20 @@ class QuantitativePlantAnalysis:
         N2tran,Xcell,Xstarc,Xsugar = 3. * hexose / (Nmass * ATPyld),1.111,1.149,1.000
         XhemiC,XhemiD,XhemiG,XlignH = 1.228,1.230,1.265,2.558
         XlignG,XlignS,Xlipid,Xprotn = 2.605,2.638,2.866,1.832
-        XoaAC,XoaMO,XoaOA,Xminrl = 0.794,0.642,4.002,0.15
+        XoaAC,XoaMO,XoaOA,Xminrl,Xsporopollenin,Xsuberin = 0.794,0.642,4.002,0.15,0,0
         result_table = pd.DataFrame({})
         
         if len(params["biomass_composition"]) == 0:
             params["biomass_composition"] = [{
-                "cellulose":0.33,"hemicellulose":0.30,"starch":0.30,"sugars":0.04,
+                "cellulose":0.33,"sporopollenin":0,"suberin":0,"hemicellulose":0.30,"starch":0.30,"sugars":0.04,
                 "lignin":0.05,"lipid":0.03,"protein":0.13,"organic_acid":0.03,
                 "minerals":0.05
             }]
         for bc in params["biomass_composition"]:
             #Setting variables and normalizing
             Cellul = bc["cellulose"]
+            Sporopollenin = bc["sporopollenin"]
+            Suberin = bc["suberin"]
             Hemice = bc["hemicellulose"]
             Starch = bc["starch"]
             Sugars = bc["sugars"]
@@ -105,7 +108,7 @@ class QuantitativePlantAnalysis:
             Proten = bc["protein"]
             OrAcid = bc["organic_acid"]
             Minerl = bc["minerals"]
-            Total = Cellul + Hemice + Starch + Sugars + Lignin + Lipids + Proten + OrAcid + Minerl
+            Total = Cellul + Hemice + Starch + Sugars + Lignin + Lipids + Proten + OrAcid + Minerl + Sporopollenin + Suberin
             Cellul = Cellul / Total
             Hemice = Hemice / Total
             Starch = Starch / Total
@@ -115,14 +118,18 @@ class QuantitativePlantAnalysis:
             Proten = Proten / Total
             OrAcid = OrAcid / Total
             Minerl = Minerl / Total
+            Sporopollenin = Sporopollenin / Total
+            Suberin = Suberin / Total
             GRcell = Xcell  * Cellul
             GRstar = Xstarc * Starch
             GRsugr = Xsugar * Sugars
             GRlipd = Xlipid * Lipids
             GRprot = Xprotn * Proten
             GRminl = Xminrl * Minerl
+            GRsporopollenin = Xsporopollenin * Sporopollenin
+            GRsuberin = Xsuberin * Suberin
             
-            NewTot = Cellul + Hemice + Starch + Sugars + Lignin + Lipids + Proten + OrAcid + Minerl
+            NewTot = Cellul + Hemice + Starch + Sugars + Lignin + Lipids + Proten + OrAcid + Minerl + Sporopollenin + Suberin
             
             if len(params["nitrogen_source"]) == 0:
                 params["nitrogen_source"] = [{"nh4":0.3,"no3":0.69,"n2":0.01}]
@@ -186,45 +193,68 @@ class QuantitativePlantAnalysis:
                             
                             GRoa   = XoaAC * AcoCit + XoaMO * MalOxa + XoaOA * Oxalic
                             GRoa   = GRoa * OrAcid
-                            GluReq = GRNacq + GRcell + GRstar + GRsugr + GRlipd + GRprot + GRminl + GRhemi + GRlign + GRoa
-                            
-                            current_output = {}
-                            current_output["Biomass composition"] = "<table>"\
-                                '<tr><th>Biomass constituent</th><th>Fraction</th><th>GluReq</th></tr>'+ \
-                                '<tr><td>Cellulose</td><td>'+format_numbers(Cellul)+"</td><td>"+format_numbers(GRcell)+"</td></tr>"+ \
-                                '<tr><td>Hemicelluloses</td><td>'+format_numbers(Hemice)+"</td><td>"+format_numbers(GRhemi)+"</td></tr>"+ \
-                                '<tr><td>Starch</td><td>'+format_numbers(Starch)+"</td><td>"+format_numbers(GRstar)+"</td></tr>"+ \
-                                '<tr><td>Sugars</td><td>'+format_numbers(Sugars)+"</td><td>"+format_numbers(GRsugr)+"</td></tr>"+ \
-                                '<tr><td>Lignins</td><td>'+format_numbers(Lignin)+"</td><td>"+format_numbers(GRlign)+"</td></tr>"+ \
-                                '<tr><td>Lipids</td><td>'+format_numbers(Lipids)+"</td><td>"+format_numbers(GRlipd)+"</td></tr>"+ \
-                                '<tr><td>Protein</td><td>'+format_numbers(Proten)+"</td><td>"+format_numbers(GRprot)+"</td></tr>"+ \
-                                '<tr><td>Organic Acids</td><td>'+format_numbers(OrAcid)+"</td><td>"+format_numbers(GRoa)+"</td></tr>"+ \
-                                '<tr><td>Minerals</td><td>'+format_numbers(Minerl)+"</td><td>"+format_numbers(GRminl)+"</td></tr>"+ \
-                                '<tr><td>N uptake/assimilation</td><td>'+str(0.0)+"</td><td>"+format_numbers(GRNacq)+"</td></tr>"+ \
-                                '<tr><td>TOTAL</td><td>'+format_numbers(NewTot)+"</td><td>"+format_numbers(GluReq)+"</td></tr></table>"
-                            current_output["Nitrogen source<br>(g/g plant)"] = "<table>"\
-                                '<tr><td>Plant N [estimated]</td><td>'+format_numbers(PlantN)+"</td></tr>"+ \
-                                '<tr><td>N from NH4-N</td><td>'+format_numbers(N_NH4)+"</td></tr>"+ \
-                                '<tr><td>N from NO3-N</td><td>'+format_numbers(N_NO3)+"</td></tr>"+ \
-                                '<tr><td>N from  N2-N</td><td>'+format_numbers(N_N2)+"</td></tr>"+ \
-                                '<tr><td>N assimilation cost</td><td>'+format_numbers(GRNacq)+"</td></tr></table>"
-                            current_output["Hemicellulose fraction<br>(g/g plant)"] = "<table>"\
-                                '<tr><td>Hemi conifer</td><td>'+format_numbers(HemiC)+"</td></tr>"+ \
-                                '<tr><td>Hemi dicot</td><td>'+format_numbers(HemiD)+"</td></tr>"+ \
-                                '<tr><td>Hemi grass</td><td>'+format_numbers(HemiG)+"</td></tr></table>"
-                            current_output["Monomer lignin fraction<br>(g/g plant)"] = "<table>"\
-                                '<tr><td>Coumaryl</td><td>'+format_numbers(Coumrl)+"</td></tr>"+ \
-                                '<tr><td>Coniferyl</td><td>'+format_numbers(Conifr)+"</td></tr>"+ \
-                                '<tr><td>Sinapyl</td><td>'+format_numbers(Sinapl)+"</td></tr></table>"
-                            current_output["Organic acid fraction<br>(g/g plant)"] = "<table>"\
-                                '<tr><td>Aconitic citric</td><td>'+format_numbers(AcoCit)+"</td></tr>"+ \
-                                '<tr><td>Malic oxaloacetic</td><td>'+format_numbers(MalOxa)+"</td></tr>"+ \
-                                '<tr><td>Oxalic</td><td>'+format_numbers(Oxalic)+"</td></tr></table>"
-                            current_output["Growth yield results"] = \
-                                format_numbers(GluReq)+" (g glucose/g plant)<br>"+ \
-                                format_numbers(1./GluReq)+" (g plant/g glucose)"
-                            result_table = result_table.append(current_output, ignore_index = True)
-        
+                            GluReq = GRNacq + GRcell + GRstar + GRsporopollenin + GRsuberin + GRsugr + GRlipd + GRprot + GRminl + GRhemi + GRlign + GRoa
+                            if len(params["transport_costs"]) == 0:
+                                params["transport_costs"] = [{"cost_selection":"trans_phloem","fraction_starch":0.5,"membrane_crossings":1}]
+                            for tc in params["transport_costs"]:
+                                CostOptions = tc["cost_selection"]
+                                FractionStarch = tc["fraction_starch"]
+                                MembraneCrossings = tc["membrane_crossings"]
+                                
+                                ATPstarch = 1.0
+                                ATPmembrane = 1.0
+                                ATPyieldResp = 28.0
+                                StaMobil = ATPstarch * FractionStarch * GluReq
+                                Sucrose = 1.0 - FractionStarch
+                                SucAmount = GluReq - StaMobil
+                                TransCost = 0
+                                if CostOptions == "trans_phloem":
+                                    TransCost = ((MembraneCrossings * ATPmembrane * GluReq / 2.0) + StaMobil) / ATPyieldResp
+                                elif CostOptions == "trans_no_phloem":
+                                    TransCost = StaMobil / ATPyieldResp
+                                
+                                current_output = {}
+                                current_output["Biomass composition"] = "<table>"\
+                                    '<tr><th>Biomass constituent</th><th>Fraction</th><th>GluReq</th></tr>'+ \
+                                    '<tr><td>Cellulose</td><td>'+format_numbers(Cellul)+"</td><td>"+format_numbers(GRcell)+"</td></tr>"+ \
+                                    '<tr><td>Hemicelluloses</td><td>'+format_numbers(Hemice)+"</td><td>"+format_numbers(GRhemi)+"</td></tr>"+ \
+                                    '<tr><td>Starch</td><td>'+format_numbers(Starch)+"</td><td>"+format_numbers(GRstar)+"</td></tr>"+ \
+                                    '<tr><td>Sugars</td><td>'+format_numbers(Sugars)+"</td><td>"+format_numbers(GRsugr)+"</td></tr>"+ \
+                                    '<tr><td>Lignins</td><td>'+format_numbers(Lignin)+"</td><td>"+format_numbers(GRlign)+"</td></tr>"+ \
+                                    '<tr><td>Lipids</td><td>'+format_numbers(Lipids)+"</td><td>"+format_numbers(GRlipd)+"</td></tr>"+ \
+                                    '<tr><td>Protein</td><td>'+format_numbers(Proten)+"</td><td>"+format_numbers(GRprot)+"</td></tr>"+ \
+                                    '<tr><td>Organic Acids</td><td>'+format_numbers(OrAcid)+"</td><td>"+format_numbers(GRoa)+"</td></tr>"+ \
+                                    '<tr><td>Minerals</td><td>'+format_numbers(Minerl)+"</td><td>"+format_numbers(GRminl)+"</td></tr>"+ \
+                                    '<tr><td>N uptake/assimilation</td><td></td><td>'+format_numbers(GRNacq)+"</td></tr>"+ \
+                                    '<tr><td>TOTAL</td><td>'+format_numbers(NewTot)+"</td><td>"+format_numbers(GluReq)+"</td></tr></table>"
+                                current_output["Nitrogen source<br>(g/g plant)"] = "<table>"\
+                                    '<tr><td>Plant N [estimated]</td><td>'+format_numbers(PlantN)+"</td></tr>"+ \
+                                    '<tr><td>N from NH4-N</td><td>'+format_numbers(N_NH4)+"</td></tr>"+ \
+                                    '<tr><td>N from NO3-N</td><td>'+format_numbers(N_NO3)+"</td></tr>"+ \
+                                    '<tr><td>N from  N2-N</td><td>'+format_numbers(N_N2)+"</td></tr>"+ \
+                                    '<tr><td>N assimilation cost</td><td>'+format_numbers(GRNacq)+"</td></tr></table>"
+                                current_output["Hemicellulose fraction<br>(g/g plant)"] = "<table>"\
+                                    '<tr><td>Hemi conifer</td><td>'+format_numbers(HemiC)+"</td></tr>"+ \
+                                    '<tr><td>Hemi dicot</td><td>'+format_numbers(HemiD)+"</td></tr>"+ \
+                                    '<tr><td>Hemi grass</td><td>'+format_numbers(HemiG)+"</td></tr></table>"
+                                current_output["Monomer lignin fraction<br>(g/g plant)"] = "<table>"\
+                                    '<tr><td>Coumaryl</td><td>'+format_numbers(Coumrl)+"</td></tr>"+ \
+                                    '<tr><td>Coniferyl</td><td>'+format_numbers(Conifr)+"</td></tr>"+ \
+                                    '<tr><td>Sinapyl</td><td>'+format_numbers(Sinapl)+"</td></tr></table>"
+                                current_output["Organic acid fraction<br>(g/g plant)"] = "<table>"\
+                                    '<tr><td>Aconitic citric</td><td>'+format_numbers(AcoCit)+"</td></tr>"+ \
+                                    '<tr><td>Malic oxaloacetic</td><td>'+format_numbers(MalOxa)+"</td></tr>"+ \
+                                    '<tr><td>Oxalic</td><td>'+format_numbers(Oxalic)+"</td></tr></table>"
+                                current_output["Transport costs"] = "<table>"\
+                                    '<tr><td>Cost options</td><td>'+CostOptions+"</td></tr>"+ \
+                                    '<tr><td>Fraction starch</td><td>'+format_numbers(FractionStarch)+"</td></tr>"+ \
+                                    '<tr><td>Membrane crossings</td><td>'+str(MembraneCrossings)+"</td></tr></table>"
+                                current_output["Growth yield results"] = "<table>"\
+                                    '<tr><td>Glucose req<br>(g/g plant)</td><td>'+format_numbers(GluReq)+"</td></tr>"+ \
+                                    '<tr><td>Transport req<br>(g/g plant)</td><td>'+format_numbers(TransCost)+"</td></tr>"+ \
+                                    '<tr><td>Total req<br>(g/g plant)</td><td>'+format_numbers(TransCost+GluReq)+"</td></tr>"+ \
+                                    '<tr><td>Yield req<br>(g plant/g glucose)</td><td>'+format_numbers(1./(TransCost+GluReq))+"</td></tr></table>"
+                                result_table = result_table.append(current_output, ignore_index = True)
         column_list = ["Biomass composition","Nitrogen source<br>(g/g plant)","Hemicellulose fraction<br>(g/g plant)","Monomer lignin fraction<br>(g/g plant)","Organic acid fraction<br>(g/g plant)","Growth yield results"]
         html_data = f"""
             <html>
