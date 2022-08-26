@@ -227,7 +227,7 @@ class QuantitativePlantAnalysis:
                                     '<tr><td>Minerals</td><td>'+format_numbers(Minerl)+"</td><td>"+format_numbers(GRminl)+"</td></tr>"+ \
                                     '<tr><td>N uptake/assimilation</td><td></td><td>'+format_numbers(GRNacq)+"</td></tr>"+ \
                                     '<tr><td>TOTAL</td><td>'+format_numbers(NewTot)+"</td><td>"+format_numbers(GluReq)+"</td></tr></table>"
-                                current_output["Nitrogen source<br>(g/g plant)"] = "<table>"\
+                                current_output["Nitrogen source<br>(g/g plant N)"] = "<table>"\
                                     '<tr><td>Plant N [estimated]</td><td>'+format_numbers(PlantN)+"</td></tr>"+ \
                                     '<tr><td>N from NH4-N</td><td>'+format_numbers(N_NH4)+"</td></tr>"+ \
                                     '<tr><td>N from NO3-N</td><td>'+format_numbers(N_NO3)+"</td></tr>"+ \
