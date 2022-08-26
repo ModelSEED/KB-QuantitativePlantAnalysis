@@ -86,7 +86,7 @@ class QuantitativePlantAnalysis:
         N2tran,Xcell,Xstarc,Xsugar = 3. * hexose / (Nmass * ATPyld),1.111,1.149,1.000
         XhemiC,XhemiD,XhemiG,XlignH = 1.228,1.230,1.265,2.558
         XlignG,XlignS,Xlipid,Xprotn = 2.605,2.638,2.866,1.832
-        XoaAC,XoaMO,XoaOA,Xminrl,Xsporopollenin,Xsuberin = 0.794,0.642,4.002,0.15,0,0
+        XoaAC,XoaMO,XoaOA,Xminrl,Xsporopollenin,Xsuberin = 0.794,0.642,4.002,0.15,3.2,3.3
         result_table = pd.DataFrame({})
         
         if len(params["biomass_composition"]) == 0:
