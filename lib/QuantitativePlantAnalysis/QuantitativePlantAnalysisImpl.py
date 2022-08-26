@@ -200,6 +200,8 @@ class QuantitativePlantAnalysis:
                                 CostOptions = tc["cost_selection"]
                                 FractionStarch = tc["fraction_starch"]
                                 MembraneCrossings = tc["membrane_crossings"]
+                                if isinstance(tc["membrane_crossings"], str):
+                                    MembraneCrossings = int(tc["membrane_crossings"])
                                 
                                 ATPstarch = 1.0
                                 ATPmembrane = 1.0
